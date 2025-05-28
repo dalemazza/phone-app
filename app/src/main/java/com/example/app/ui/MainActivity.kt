@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.example.app.R
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editTextDate: EditText
     private lateinit var saveButton: Button
     private lateinit var totalTextView: TextView
+    private lateinit var resetButton: Button
 
     private var tempImageFile: File? = null
 
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         editTextDate = findViewById(R.id.input_date)
         saveButton = findViewById(R.id.saveButton)
         totalTextView = findViewById(R.id.totalText)
+        resetButton = findViewById(R.id.resetButton)
 
         takePhotoButton.setOnClickListener {
             tempImageFile = createTempImageFile()
@@ -78,6 +81,18 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please fill all fields and take a photo", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        resetButton.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Confirm Reset")
+                .setMessage("Are you sure you want to reset all receipts? This cannot be undone.")
+                .setPositiveButton("Yes") { _, _ ->
+                    vm.reset()
+                    Toast.makeText(this, "Receipts cleared", Toast.LENGTH_SHORT).show()
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
         }
 
         vm.total.observe(this) { total ->

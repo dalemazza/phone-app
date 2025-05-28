@@ -22,6 +22,13 @@ class ReceiptViewModel(private val db: AppDatabase) : ViewModel() {
         }
     }
 
+    fun reset() {
+        viewModelScope.launch(Dispatchers.IO) {
+            db.receiptDao().clearAll()
+            refreshTotal()
+        }
+    }
+
     private fun refreshTotal() {
         viewModelScope.launch(Dispatchers.IO) {
             val totalValue = db.receiptDao().getTotalAmount()

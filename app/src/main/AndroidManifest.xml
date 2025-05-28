@@ -7,7 +7,6 @@
         android:name="android.hardware.camera"
         android:required="true" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <!-- Optional: for saving photos, remove if not used -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -31,11 +30,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <!-- Main activity -->
+        <!-- Main Activity -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
             android:label="Receipt Tracker"
+            
             android:theme="@style/Theme.App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

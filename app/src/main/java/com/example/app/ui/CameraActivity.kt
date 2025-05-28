@@ -8,7 +8,6 @@ import com.example.app.R
 
 class CameraActivity : AppCompatActivity() {
     private val cameraLauncher = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
-        // TODO: save bitmap to file if needed
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

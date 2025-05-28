@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Add this for cache directory -->
+    <!-- temp photo -->
     <cache-path name="temp_receipts" path="temp_receipts/" />
 
-    <!-- Also keep this if you're using internal files for receipts -->
+    <!-- used to copy temp photo to phones pictues -->
     <files-path name="receipts" path="receipts/" />
 </paths>

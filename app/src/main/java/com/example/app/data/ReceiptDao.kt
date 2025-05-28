@@ -11,4 +11,7 @@ interface ReceiptDao {
 
     @Query("SELECT SUM(amount) FROM receipts")
     suspend fun getTotalAmount(): Double?
+
+    @Query("DELETE FROM receipts")
+    suspend fun clearAll()
 }
